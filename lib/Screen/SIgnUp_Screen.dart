@@ -1,3 +1,4 @@
+import 'package:ecommerceorange/Screen/SignUp_2_Screen.dart';
 import 'package:ecommerceorange/Wedgit/TextFieldWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -23,7 +24,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: Column(
             children: [
               const SizedBox(
-                height: 45,
+                height: 38,
               ),
               const Text(
                 'Register Account',
@@ -33,7 +34,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 8,
               ),
               const Text(
                 "Complete your details or continue\n"
@@ -44,17 +45,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 style: TextStyle(color: Colors.grey),
               ),
               const SizedBox(
-                height: 50,
+                height: 42,
               ),
-              TextFieldWidget(emailTextEditingController: emailTextEditingController, hintText: "Email", labelText: "Enter your Email", suffixIcon: Icons.email_outlined),
-              TextFieldWidget(emailTextEditingController: passwordTextEditingController, hintText: "Password", labelText: "Enter your Password", suffixIcon: Icons.lock_outline),
-              TextFieldWidget(emailTextEditingController: confirmPasswordTextEditingController, hintText: "Confirm Password", labelText: "Re-Enter your Password", suffixIcon: Icons.lock_outline),
+              TextFieldWidget(emailTextEditingController: emailTextEditingController, labelText: "Email", hintText: "Enter your Email", assetName: "assets/icons/icons/Mail.svg"),
+              TextFieldWidget(emailTextEditingController: passwordTextEditingController, labelText: "Password", hintText: "Enter your Password", assetName: "assets/icons/icons/Lock.svg"),
+              TextFieldWidget(emailTextEditingController: confirmPasswordTextEditingController, labelText: "Confirm Password", hintText: "Re-Enter your Password", assetName: "assets/icons/icons/Lock.svg"),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: customButton(buttonText: "Continue", onTap: () {}),
+                child: customButton(buttonText: "Continue", onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const AnimatedSwitcher(duration: Duration(microseconds: 1000),child: SignUp2Screen(),switchInCurve: Curves.easeIn),));}),
               ),
               const SizedBox(
-                height: 85,
+                height: 65,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

@@ -50,8 +50,8 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 75,
               ),
-              TextFieldWidget(emailTextEditingController: emailTextEditingController,labelText: "Email",hintText: "Enter your Email",suffixIcon: Icons.email_outlined),
-              TextFieldWidget(emailTextEditingController: passwordTextEditingController, hintText: "Password", labelText: "Enter your Password", suffixIcon: Icons.lock_outline),
+              TextFieldWidget(emailTextEditingController: emailTextEditingController,labelText: "Email",hintText: "Enter your Email",assetName: "assets/icons/icons/Mail.svg"),
+              TextFieldWidget(emailTextEditingController: passwordTextEditingController, labelText: "Password", hintText: "Enter your Password", assetName: "assets/icons/icons/Lock.svg"),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15),

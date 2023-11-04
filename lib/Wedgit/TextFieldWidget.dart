@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class TextFieldWidget extends StatelessWidget {
   const TextFieldWidget({
@@ -6,11 +7,11 @@ class TextFieldWidget extends StatelessWidget {
     required this.emailTextEditingController,
     required this.hintText,
     required this.labelText,
-    required this.suffixIcon,
+    required this.assetName,
   });
   final String hintText;
   final String labelText;
-  final IconData suffixIcon;
+  final String assetName;
   final TextEditingController emailTextEditingController;
 
   @override
@@ -27,10 +28,8 @@ class TextFieldWidget extends StatelessWidget {
           hintStyle: const TextStyle(color: Colors.grey),
           hintText: hintText,
           floatingLabelBehavior: FloatingLabelBehavior.always,
-          suffixIcon:  Icon(suffixIcon),
-          suffixIconColor: Colors.grey,
-          suffixIconConstraints:
-          BoxConstraints.tight(const Size.square(65)),
+          suffixIcon: Padding(padding: EdgeInsets.only(right: 20),child: SvgPicture.asset(assetName,allowDrawingOutsideViewBox: false)),
+           suffixIconConstraints: BoxConstraints.tight(const Size.square(45)),
           contentPadding: const EdgeInsets.symmetric(
               horizontal: 40, vertical: 22),
           labelText: labelText,
