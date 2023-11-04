@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         BoxConstraints.tight(const Size.square(55)),
                     contentPadding: const EdgeInsets.symmetric(
                         horizontal: 30, vertical: 20),
-                    labelText: "Passowrd",
+                    labelText: "Password",
                     labelStyle: const TextStyle(color: Colors.grey),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25)),
