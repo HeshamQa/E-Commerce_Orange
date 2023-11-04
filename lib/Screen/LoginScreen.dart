@@ -1,7 +1,7 @@
 import 'package:ecommerceorange/Screen/Forget_Password.dart';
 import 'package:ecommerceorange/Wedgit/Button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_social_button/flutter_social_button.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -52,6 +52,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: TextField(
                   controller: emailTextEditingController,
                   decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
                     hintStyle: const TextStyle(color: Colors.grey),
                     hintText: "Enter your Email",
                     floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -64,6 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     labelText: "Email",
                     labelStyle: const TextStyle(color: Colors.grey),
                     border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey,),
                         borderRadius: BorderRadius.circular(25)),
                   ),
                 ),
@@ -73,6 +77,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: TextField(
                   controller: passwordTextEditingController,
                   decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
                     hintStyle: const TextStyle(color: Colors.grey),
                     hintText: "Enter your Password",
                     floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -152,10 +159,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       highlightColor: Colors.transparent,
                       color: Colors.grey,
                       onPressed: () {},
-                      icon:  const FaIcon(
-                        FontAwesomeIcons.google,
-                        color: googleColor,
-                      )),
+                      icon:  SvgPicture.asset("assets/icons/icons/google-icon.svg")
+                      ),
                   const SizedBox(
                     width: 20,
                   ),
@@ -170,10 +175,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       highlightColor: Colors.transparent,
                       color: Colors.grey,
                       onPressed: () {},
-                      icon:  const FaIcon(
-                        FontAwesomeIcons.facebookF,
-                        color: facebookColor,
-                      )),
+                      icon:  SvgPicture.asset("assets/icons/icons/facebook-2.svg")),
                   const SizedBox(
                     width: 20,
                   ),
@@ -188,10 +190,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       highlightColor: Colors.transparent,
                       color: Colors.grey,
                       onPressed: () {},
-                      icon:  const FaIcon(
-                        FontAwesomeIcons.twitter,
-                        color: twitterColor,
-                      )),
+                      icon:  SvgPicture.asset("assets/icons/icons/twitter.svg"),
+                  ),
                 ],
               ),
               const SizedBox(
