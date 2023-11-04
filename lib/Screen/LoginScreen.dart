@@ -1,7 +1,10 @@
 import 'package:ecommerceorange/Screen/Forget_Password.dart';
+import 'package:ecommerceorange/Screen/SIgnUp_Screen.dart';
 import 'package:ecommerceorange/Wedgit/Button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../Wedgit/TextFieldWidget.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -47,55 +50,8 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 75,
               ),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: TextField(
-                  controller: emailTextEditingController,
-                  decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                    hintStyle: const TextStyle(color: Colors.grey),
-                    hintText: "Enter your Email",
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    suffixIcon: const Icon(Icons.email_outlined),
-                    suffixIconColor: Colors.grey,
-                    suffixIconConstraints:
-                        BoxConstraints.tight(const Size.square(55)),
-                    contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 20),
-                    labelText: "Email",
-                    labelStyle: const TextStyle(color: Colors.grey),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey,),
-                        borderRadius: BorderRadius.circular(25)),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: TextField(
-                  controller: passwordTextEditingController,
-                  decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                    hintStyle: const TextStyle(color: Colors.grey),
-                    hintText: "Enter your Password",
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    suffixIcon: const Icon(Icons.lock_outline),
-                    suffixIconColor: Colors.grey,
-                    suffixIconConstraints:
-                        BoxConstraints.tight(const Size.square(55)),
-                    contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 20),
-                    labelText: "Password",
-                    labelStyle: const TextStyle(color: Colors.grey),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25)),
-                  ),
-                ),
-              ),
+              TextFieldWidget(emailTextEditingController: emailTextEditingController,labelText: "Email",hintText: "Enter your Email",suffixIcon: Icons.email_outlined),
+              TextFieldWidget(emailTextEditingController: passwordTextEditingController, hintText: "Password", labelText: "Enter your Password", suffixIcon: Icons.lock_outline),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15),
@@ -150,11 +106,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   IconButton(
                       style: ButtonStyle(
-                          backgroundColor: MaterialStatePropertyAll(Colors.grey.shade200),
+                          fixedSize: const MaterialStatePropertyAll(Size(50, 50)),
+                          backgroundColor: MaterialStatePropertyAll(Colors.grey.shade300),
                           shape: const MaterialStatePropertyAll(CircleBorder())
                           ),
-                      padding: const EdgeInsets.all(15),
-                      iconSize: 30,
+                      // padding: const EdgeInsets.all(15),
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       color: Colors.grey,
@@ -166,11 +122,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   IconButton(
                       style: ButtonStyle(
-                          backgroundColor: MaterialStatePropertyAll(Colors.grey.shade200),
-                          shape: const MaterialStatePropertyAll(CircleBorder())
+                        fixedSize: const MaterialStatePropertyAll(Size(50, 50)),
+                          backgroundColor: MaterialStatePropertyAll(Colors.grey.shade300),
+                          shape: const MaterialStatePropertyAll(CircleBorder()),
                       ),
-                      padding: const EdgeInsets.all(16),
-                      iconSize: 30,
+                      // padding: const EdgeInsets.all(15),
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       color: Colors.grey,
@@ -181,10 +137,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   IconButton(
                       style: ButtonStyle(
-                          backgroundColor: MaterialStatePropertyAll(Colors.grey.shade200),
+                          fixedSize: const MaterialStatePropertyAll(Size(50, 50)),
+                          backgroundColor: MaterialStatePropertyAll(Colors.grey.shade300),
                           shape: const MaterialStatePropertyAll(CircleBorder())
                       ),
-                      padding: const EdgeInsets.all(15),
+                      // padding: const EdgeInsets.all(15),
                       iconSize: 30,
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
@@ -209,7 +166,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       "Sign Up ",
                       style: TextStyle(color: Colors.deepOrange),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpScreen(),));
+                    },
                   ),
                 ],
               ),
