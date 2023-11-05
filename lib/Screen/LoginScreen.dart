@@ -1,4 +1,5 @@
 import 'package:ecommerceorange/Screen/Forget_Password.dart';
+import 'package:ecommerceorange/Screen/Home_Screen.dart';
 import 'package:ecommerceorange/Screen/SIgnUp_Screen.dart';
 import 'package:ecommerceorange/Wedgit/Button.dart';
 import 'package:flutter/material.dart';
@@ -96,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: customButton(buttonText: "Continue", onTap: () {}),
+                child: customButton(buttonText: "Continue", onTap: () {Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const HomeScreen(),), (route) => false);}),
               ),
               const SizedBox(
                 height: 40,
