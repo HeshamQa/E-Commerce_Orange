@@ -44,16 +44,28 @@ class _OTPScreenState extends State<OTPScreen> {
                 height: 70,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                padding: const EdgeInsets.symmetric(horizontal: 30.0),
                 child: OtpTextField(
                   cursorColor: Colors.deepOrange,
-                  styles: const [TextStyle(
-                    height: 60,
-                  )],
+                  styles: const [
+                    TextStyle(
+                    height: 2,
+
+                  ),
+                    TextStyle(
+                      height: 2,
+                    ),
+                    TextStyle(
+                      height: 2,
+                    ),
+                    TextStyle(
+                      height: 2,
+                    ),
+                  ],
                   focusedBorderColor: Colors.deepOrange,
                   showFieldAsBox: true,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  fieldWidth: 60,
+                  fieldWidth: 70,
                   borderRadius: BorderRadius.circular(20),
                   enabledBorderColor: Colors.black26,
                 ),
