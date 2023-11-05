@@ -28,7 +28,7 @@ class TextFieldWidget extends StatelessWidget {
           hintStyle: const TextStyle(color: Colors.grey),
           hintText: hintText,
           floatingLabelBehavior: FloatingLabelBehavior.always,
-          suffixIcon: Padding(padding: EdgeInsets.only(right: 20),child: SvgPicture.asset(assetName,allowDrawingOutsideViewBox: false)),
+          suffixIcon: Padding(padding: const EdgeInsets.only(right: 20),child: SvgPicture.asset(assetName,allowDrawingOutsideViewBox: false)),
            suffixIconConstraints: BoxConstraints.tight(const Size.square(45)),
           contentPadding: const EdgeInsets.symmetric(
               horizontal: 40, vertical: 22),

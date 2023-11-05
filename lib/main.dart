@@ -1,7 +1,5 @@
-import 'package:ecommerceorange/Screen/LoginScreen.dart';
 import 'package:ecommerceorange/Screen/OnBoarding_Screen.dart';
 import 'package:flutter/material.dart';
-import 'package:onboarding/onboarding.dart';
 
 void main() {
   runApp(const MyApp());

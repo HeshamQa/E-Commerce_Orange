@@ -1,3 +1,4 @@
+import 'package:ecommerceorange/Screen/OTP_Screen.dart';
 import 'package:ecommerceorange/Screen/SIgnUp_Screen.dart';
 import 'package:ecommerceorange/Wedgit/Button.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +51,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               const SizedBox(height: 80,),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: customButton(buttonText: "Continue", onTap: () {}),
+                child: customButton(buttonText: "Continue", onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const OTPScreen(),));}),
               ),
               const SizedBox(
                 height: 80,

@@ -93,7 +93,7 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
                   flex: 2,
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 35,),
+                  padding: const EdgeInsets.symmetric(vertical: 35,),
                   child: customButton(
                     buttonText: cIndex < OnBoardingList.length - 1
                         ? "Continue"
