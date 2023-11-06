@@ -1,4 +1,4 @@
-class imageBannerModel {
-  String image;
-  imageBannerModel({required this.image});
+class ImageBannerModel {
+  final String image;
+  ImageBannerModel({required this.image});
 }

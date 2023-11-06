@@ -43,14 +43,14 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
                   cIndex = value;
                 });
               },
-              itemCount: OnBoardingList.length,
+              itemCount: onBoardingList.length,
               itemBuilder: (context, index) => Column(
                 children: [
                   const SizedBox(
                     height: 40,
                   ),
                   Text(
-                    OnBoardingList[index].title!,
+                    onBoardingList[index].title!,
                     style: const TextStyle(
                       color: Color(0xfffc7444),
                       fontWeight: FontWeight.w700,
@@ -58,7 +58,7 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
                     ),
                   ),
                   Text(
-                    OnBoardingList[index].body!,
+                    onBoardingList[index].body!,
                     style: const TextStyle(
                       color: Color(0xff949494),
                       fontWeight: FontWeight.normal,
@@ -69,7 +69,7 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
                     height: 60,
                   ),
                   Image.asset(
-                    OnBoardingList[index].image!,
+                    onBoardingList[index].image!,
                     width: 300,
                     height: 350,
                     fit: BoxFit.fill,
@@ -86,7 +86,7 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ...List.generate(
-                        OnBoardingList.length, (index) => dotBuilder(index))
+                        onBoardingList.length, (index) => dotBuilder(index))
                   ],
                 ),
                 const Spacer(
@@ -95,11 +95,11 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 35,),
                   child: customButton(
-                    buttonText: cIndex < OnBoardingList.length - 1
+                    buttonText: cIndex < onBoardingList.length - 1
                         ? "Continue"
                         : "Next",
                     onTap: () {
-                      if (cIndex == OnBoardingList.length - 1) {
+                      if (cIndex == onBoardingList.length - 1) {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
