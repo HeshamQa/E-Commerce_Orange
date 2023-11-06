@@ -29,6 +29,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               const Text(
                 'Forget Password',
                 style: TextStyle(
+                  fontFamily: 'muli',
                   fontSize: 30,
                   fontWeight: FontWeight.w700,
                 ),
@@ -38,20 +39,34 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               ),
               const Text(
                 "Please enter your email and we will send\n"
-                    "a link to return to your account",
+                "a link to return to your account",
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 textWidthBasis: TextWidthBasis.parent,
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'muli', color: Colors.grey),
               ),
               const SizedBox(
                 height: 70,
               ),
-              TextFieldWidget(emailTextEditingController: emailTextEditingController,labelText: "Email",hintText: "Enter your Email",assetName: "assets/icons/icons/Mail.svg"),
-              const SizedBox(height: 80,),
+              TextFieldWidget(
+                  emailTextEditingController: emailTextEditingController,
+                  labelText: "Email",
+                  hintText: "Enter your Email",
+                  assetName: "assets/icons/icons/Mail.svg"),
+              const SizedBox(
+                height: 80,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: customButton(buttonText: "Continue", onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const OTPScreen(),));}),
+                child: CustomButton(
+                    buttonText: "Continue",
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const OTPScreen(),
+                          ));
+                    }),
               ),
               const SizedBox(
                 height: 80,
@@ -61,15 +76,20 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 children: [
                   const Text(
                     "Don't have an account? ",
-                    style: TextStyle(color: Colors.grey),
+                    style: TextStyle(fontFamily: 'muli', color: Colors.grey),
                   ),
                   InkWell(
                     child: const Text(
                       "Sign Up ",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(
+                          fontFamily: 'muli', color: Colors.deepOrange),
                     ),
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpScreen(),));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignUpScreen(),
+                          ));
                     },
                   ),
                 ],

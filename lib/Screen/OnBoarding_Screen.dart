@@ -52,6 +52,7 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
                   Text(
                     onBoardingList[index].title!,
                     style: const TextStyle(
+                      fontFamily: 'muli',
                       color: Color(0xfffc7444),
                       fontWeight: FontWeight.w700,
                       fontSize: 40,
@@ -60,6 +61,7 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
                   Text(
                     onBoardingList[index].body!,
                     style: const TextStyle(
+                      fontFamily: 'muli',
                       color: Color(0xff949494),
                       fontWeight: FontWeight.normal,
                       fontSize: 17,
@@ -93,8 +95,10 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
                   flex: 2,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 35,),
-                  child: customButton(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 35,
+                  ),
+                  child: CustomButton(
                     buttonText: cIndex < onBoardingList.length - 1
                         ? "Continue"
                         : "Next",

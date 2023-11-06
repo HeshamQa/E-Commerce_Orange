@@ -33,6 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const Text(
                 'Welcome back',
                 style: TextStyle(
+                  fontFamily: 'muli',
                   fontSize: 30,
                   fontWeight: FontWeight.w700,
                 ),
@@ -46,13 +47,21 @@ class _LoginScreenState extends State<LoginScreen> {
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 textWidthBasis: TextWidthBasis.parent,
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'muli', color: Colors.grey),
               ),
               const SizedBox(
                 height: 75,
               ),
-              TextFieldWidget(emailTextEditingController: emailTextEditingController,labelText: "Email",hintText: "Enter your Email",assetName: "assets/icons/icons/Mail.svg"),
-              TextFieldWidget(emailTextEditingController: passwordTextEditingController, labelText: "Password", hintText: "Enter your Password", assetName: "assets/icons/icons/Lock.svg"),
+              TextFieldWidget(
+                  emailTextEditingController: emailTextEditingController,
+                  labelText: "Email",
+                  hintText: "Enter your Email",
+                  assetName: "assets/icons/icons/Mail.svg"),
+              TextFieldWidget(
+                  emailTextEditingController: passwordTextEditingController,
+                  labelText: "Password",
+                  hintText: "Enter your Password",
+                  assetName: "assets/icons/icons/Lock.svg"),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15),
@@ -70,6 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     const Text(
                       "Remember me",
                       style: TextStyle(
+                        fontFamily: 'muli',
                         color: Colors.grey,
                       ),
                     ),
@@ -86,6 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: const Text(
                         "Forget Password?",
                         style: TextStyle(
+                          fontFamily: 'muli',
                           color: Colors.grey,
                           decoration: TextDecoration.underline,
                           decorationColor: Colors.grey,
@@ -97,7 +108,16 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: customButton(buttonText: "Continue", onTap: () {Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const HomeScreen(),), (route) => false);}),
+                child: CustomButton(
+                    buttonText: "Continue",
+                    onTap: () {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomeScreen(),
+                          ),
+                          (route) => false);
+                    }),
               ),
               const SizedBox(
                 height: 40,
@@ -107,48 +127,52 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   IconButton(
                       style: ButtonStyle(
-                          fixedSize: const MaterialStatePropertyAll(Size(50, 50)),
-                          backgroundColor: MaterialStatePropertyAll(Colors.grey.shade300),
-                          shape: const MaterialStatePropertyAll(CircleBorder())
-                          ),
+                          fixedSize:
+                              const MaterialStatePropertyAll(Size(50, 50)),
+                          backgroundColor:
+                              MaterialStatePropertyAll(Colors.grey.shade300),
+                          shape:
+                              const MaterialStatePropertyAll(CircleBorder())),
                       // padding: const EdgeInsets.all(15),
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       color: Colors.grey,
                       onPressed: () {},
-                      icon:  SvgPicture.asset("assets/icons/icons/google-icon.svg")
-                      ),
+                      icon: SvgPicture.asset(
+                          "assets/icons/icons/google-icon.svg")),
                   const SizedBox(
                     width: 20,
                   ),
                   IconButton(
                       style: ButtonStyle(
                         fixedSize: const MaterialStatePropertyAll(Size(50, 50)),
-                          backgroundColor: MaterialStatePropertyAll(Colors.grey.shade300),
-                          shape: const MaterialStatePropertyAll(CircleBorder()),
+                        backgroundColor:
+                            MaterialStatePropertyAll(Colors.grey.shade300),
+                        shape: const MaterialStatePropertyAll(CircleBorder()),
                       ),
                       // padding: const EdgeInsets.all(15),
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       color: Colors.grey,
                       onPressed: () {},
-                      icon:  SvgPicture.asset("assets/icons/icons/facebook-2.svg")),
+                      icon: SvgPicture.asset(
+                          "assets/icons/icons/facebook-2.svg")),
                   const SizedBox(
                     width: 20,
                   ),
                   IconButton(
-                      style: ButtonStyle(
-                          fixedSize: const MaterialStatePropertyAll(Size(50, 50)),
-                          backgroundColor: MaterialStatePropertyAll(Colors.grey.shade300),
-                          shape: const MaterialStatePropertyAll(CircleBorder())
-                      ),
-                      // padding: const EdgeInsets.all(15),
-                      iconSize: 30,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      color: Colors.grey,
-                      onPressed: () {},
-                      icon:  SvgPicture.asset("assets/icons/icons/twitter.svg"),
+                    style: ButtonStyle(
+                        fixedSize: const MaterialStatePropertyAll(Size(50, 50)),
+                        backgroundColor:
+                            MaterialStatePropertyAll(Colors.grey.shade300),
+                        shape: const MaterialStatePropertyAll(CircleBorder())),
+                    // padding: const EdgeInsets.all(15),
+                    iconSize: 30,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    color: Colors.grey,
+                    onPressed: () {},
+                    icon: SvgPicture.asset("assets/icons/icons/twitter.svg"),
                   ),
                 ],
               ),
@@ -160,15 +184,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   const Text(
                     "Don't have an account? ",
-                    style: TextStyle(color: Colors.grey),
+                    style: TextStyle(fontFamily: 'muli', color: Colors.grey),
                   ),
                   InkWell(
                     child: const Text(
                       "Sign Up ",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(
+                          fontFamily: 'muli', color: Colors.deepOrange),
                     ),
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpScreen(),));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignUpScreen(),
+                          ));
                     },
                   ),
                 ],

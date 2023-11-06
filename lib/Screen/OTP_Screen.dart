@@ -25,6 +25,7 @@ class _OTPScreenState extends State<OTPScreen> {
               const Text(
                 'OTP Verification',
                 style: TextStyle(
+                  fontFamily: 'muli',
                   fontSize: 30,
                   fontWeight: FontWeight.w700,
                 ),
@@ -34,11 +35,11 @@ class _OTPScreenState extends State<OTPScreen> {
               ),
               const Text(
                 "We send your code to +962 788828337\n"
-                    "This code will expired in 15 seconds",
+                "This code will expired in 15 seconds",
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 textWidthBasis: TextWidthBasis.parent,
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'muli', color: Colors.grey),
               ),
               const SizedBox(
                 height: 70,
@@ -49,16 +50,19 @@ class _OTPScreenState extends State<OTPScreen> {
                   cursorColor: Colors.deepOrange,
                   styles: const [
                     TextStyle(
-                    height: 2,
-
-                  ),
-                    TextStyle(
+                      fontFamily: 'muli',
                       height: 2,
                     ),
                     TextStyle(
+                      fontFamily: 'muli',
                       height: 2,
                     ),
                     TextStyle(
+                      fontFamily: 'muli',
+                      height: 2,
+                    ),
+                    TextStyle(
+                      fontFamily: 'muli',
                       height: 2,
                     ),
                   ],
@@ -70,10 +74,12 @@ class _OTPScreenState extends State<OTPScreen> {
                   enabledBorderColor: Colors.black26,
                 ),
               ),
-              const SizedBox(height: 80,),
+              const SizedBox(
+                height: 80,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: customButton(buttonText: "Check", onTap: () {}),
+                child: CustomButton(buttonText: "Check", onTap: () {}),
               ),
               const SizedBox(
                 height: 80,
@@ -83,7 +89,7 @@ class _OTPScreenState extends State<OTPScreen> {
                 children: [
                   Text(
                     "ReSend OTP Code ",
-                    style: TextStyle(color: Colors.grey),
+                    style: TextStyle(fontFamily: 'muli', color: Colors.grey),
                   ),
                 ],
               ),

@@ -12,10 +12,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final int _counter = 0;
   List<int> brandCounter = [10, 5];
-   ColorFilter image= ColorFilter.mode(Colors.grey.shade300, BlendMode.srcIn);
-   ColorFilter image2=const ColorFilter.mode(Colors.red, BlendMode.srcIn);
-  Color color1=Colors.grey.shade100;
-  Color color2=Colors.red.shade100;
+  ColorFilter image = ColorFilter.mode(Colors.grey.shade300, BlendMode.srcIn);
+  ColorFilter image2 = const ColorFilter.mode(Colors.red, BlendMode.srcIn);
+  Color color1 = Colors.grey.shade100;
+  Color color2 = Colors.red.shade100;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(15.0),
+
                   ///Header {search bar , Cart , Notifications}
                   child: Row(
                     children: [
@@ -46,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         elevation: MaterialStateProperty.all(0),
                         hintText: "Search...",
                         hintStyle: const MaterialStatePropertyAll(
-                            TextStyle(color: Colors.grey)),
+                            TextStyle(fontFamily: 'muli', color: Colors.grey)),
                       ),
                       const Spacer(),
                       IconButton(
@@ -94,6 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Text(
                               "$_counter",
                               style: const TextStyle(
+                                fontFamily: 'muli',
                                 color: Colors.white,
                                 fontSize: 10,
                               ),
@@ -105,9 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 50
-                ),
+                const SizedBox(height: 50),
 
                 ///Image Banner
                 Container(
@@ -162,7 +162,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Text(
                                   categoriesModelList[index].name,
                                   textAlign: TextAlign.center,
-                                  style: const TextStyle(color: Colors.grey),
+                                  style: const TextStyle(
+                                      fontFamily: 'muli', color: Colors.grey),
                                 )),
                           ),
                         ],
@@ -179,20 +180,21 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       const Text("Special For You",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20)),
+                              fontFamily: 'muli',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20)),
                       InkWell(
                         child: const Text(
                           "See More",
-                          style: TextStyle(color: Colors.grey),
+                          style:
+                              TextStyle(fontFamily: 'muli', color: Colors.grey),
                         ),
                         onTap: () {},
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 20
-                ),
+                const SizedBox(height: 20),
 
                 ///Special For You {Components}
                 SizedBox(
@@ -224,12 +226,15 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                 Text(specialModelList[index].title,
+                                Text(specialModelList[index].title,
                                     style: const TextStyle(
-                                        color: Colors.white, fontSize: 20)),
+                                        fontFamily: 'muli',
+                                        color: Colors.white,
+                                        fontSize: 20)),
                                 Text(
                                   "${specialModelList[index].brandCount}${specialModelList[index].subTitle}",
-                                  style: const TextStyle(color: Colors.white),
+                                  style: const TextStyle(
+                                      fontFamily: 'muli', color: Colors.white),
                                 ),
                               ],
                             ),
@@ -249,11 +254,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       const Text("Popular Product",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20)),
+                              fontFamily: 'muli',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20)),
                       InkWell(
                         child: const Text(
                           "See More",
-                          style: TextStyle(color: Colors.grey),
+                          style:
+                              TextStyle(fontFamily: 'muli', color: Colors.grey),
                         ),
                         onTap: () {},
                       ),
@@ -261,6 +269,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
+
                 ///Popular products Component
                 SizedBox(
                   height: 295,
@@ -289,13 +298,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                           ),
-
-                           SizedBox(
+                          SizedBox(
                             width: 145,
                             child: Text(
                               popularModelList[index].title,
                               style: const TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.w400),
+                                  fontFamily: 'muli',
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400),
                             ),
                           ),
                           SizedBox(
@@ -304,35 +314,39 @@ class _HomeScreenState extends State<HomeScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                 Text(
+                                Text(
                                   "\$${popularModelList[index].price}",
                                   style: const TextStyle(
+                                      fontFamily: 'muli',
                                       fontSize: 18,
                                       color: Colors.deepOrange,
                                       fontWeight: FontWeight.bold),
                                 ),
                                 IconButton(
-                                    style: ButtonStyle(
-                                      fixedSize: const MaterialStatePropertyAll(
-                                          Size(20, 20)),
-                                      backgroundColor: MaterialStatePropertyAll(
-                                          color1),
-                                      shape: const MaterialStatePropertyAll(
-                                          CircleBorder()),
-                                    ),
-                                    highlightColor: Colors.transparent,
-                                    onPressed: () {
-                                      setState(() {
-                                        ColorFilter temp=image;
-                                        image=image2;
-                                        image2=temp;
-                                        ///
-                                        Color c=color1;
-                                        color1=color2;
-                                        color2=c;
-                                      });
-                                    },
-                                    icon: SvgPicture.asset("assets/icons/icons/Heart Icon_2.svg",colorFilter: image),
+                                  style: ButtonStyle(
+                                    fixedSize: const MaterialStatePropertyAll(
+                                        Size(20, 20)),
+                                    backgroundColor:
+                                        MaterialStatePropertyAll(color1),
+                                    shape: const MaterialStatePropertyAll(
+                                        CircleBorder()),
+                                  ),
+                                  highlightColor: Colors.transparent,
+                                  onPressed: () {
+                                    setState(() {
+                                      ColorFilter temp = image;
+                                      image = image2;
+                                      image2 = temp;
+
+                                      ///
+                                      Color c = color1;
+                                      color1 = color2;
+                                      color2 = c;
+                                    });
+                                  },
+                                  icon: SvgPicture.asset(
+                                      "assets/icons/icons/Heart Icon_2.svg",
+                                      colorFilter: image),
                                 ),
                               ],
                             ),
