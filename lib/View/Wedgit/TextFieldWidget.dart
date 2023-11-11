@@ -7,12 +7,12 @@ class TextFieldWidget extends StatelessWidget {
     required this.emailTextEditingController,
     required this.hintText,
     required this.labelText,
-    required this.assetName,
+    required this.hintIcon,
   });
 
   final String hintText;
   final String labelText;
-  final String assetName;
+  final String hintIcon;
   final TextEditingController emailTextEditingController;
 
   @override
@@ -31,7 +31,7 @@ class TextFieldWidget extends StatelessWidget {
           floatingLabelBehavior: FloatingLabelBehavior.always,
           suffixIcon: Padding(
               padding: const EdgeInsets.only(right: 20),
-              child: SvgPicture.asset(assetName,
+              child: SvgPicture.asset(hintIcon,
                   allowDrawingOutsideViewBox: false)),
           suffixIconConstraints: BoxConstraints.tight(const Size.square(45)),
           contentPadding:

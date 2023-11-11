@@ -1,9 +1,9 @@
-import 'package:ecommerceorange/Screen/OTP_Screen.dart';
-import 'package:ecommerceorange/Screen/SIgnUp_Screen.dart';
-import 'package:ecommerceorange/Wedgit/Button.dart';
-import 'package:flutter/material.dart';
 
+import 'package:flutter/material.dart';
+import '../Wedgit/Button.dart';
 import '../Wedgit/TextFieldWidget.dart';
+import 'OTP_Screen.dart';
+import 'SIgnUp_Screen.dart';
 
 class ForgetPasswordScreen extends StatefulWidget {
   const ForgetPasswordScreen({super.key});
@@ -52,7 +52,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                   emailTextEditingController: emailTextEditingController,
                   labelText: "Email",
                   hintText: "Enter your Email",
-                  assetName: "assets/icons/icons/Mail.svg"),
+                  hintIcon: "assets/icons/icons/Mail.svg"),
               const SizedBox(
                 height: 80,
               ),

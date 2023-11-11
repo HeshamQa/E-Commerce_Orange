@@ -1,5 +1,6 @@
-import 'package:ecommerceorange/Screen/OnBoarding_Screen.dart';
 import 'package:flutter/material.dart';
+
+import 'View/Screen/OnBoarding_Screen.dart';
 
 void main() {
   runApp(const MyApp());

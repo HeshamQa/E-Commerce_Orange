@@ -1,6 +1,8 @@
-import 'package:ecommerceorange/Wedgit/TextFieldWidget.dart';
+import 'package:ecommerceorange/General.dart';
 import 'package:flutter/material.dart';
 import '../Wedgit/Button.dart';
+import '../Wedgit/TextFieldWidget.dart';
+import 'Home_Screen/Home_Screen.dart';
 
 class SignUp2Screen extends StatefulWidget {
   const SignUp2Screen({super.key});
@@ -12,11 +14,13 @@ class SignUp2Screen extends StatefulWidget {
 class _SignUp2ScreenState extends State<SignUp2Screen> {
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailTextEditingController = TextEditingController();
-    TextEditingController passwordTextEditingController =
+    TextEditingController firstNameTextEditingController = TextEditingController();
+    TextEditingController lastNameTextEditingController =
         TextEditingController();
-    TextEditingController confirmPasswordTextEditingController =
+    TextEditingController phoneTextEditingController =
         TextEditingController();
+    TextEditingController addressTextEditingController =
+    TextEditingController();
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -49,30 +53,35 @@ class _SignUp2ScreenState extends State<SignUp2Screen> {
                 height: 38,
               ),
               TextFieldWidget(
-                  emailTextEditingController: emailTextEditingController,
+                  emailTextEditingController: firstNameTextEditingController,
                   labelText: "First Name",
                   hintText: "Enter your first name",
-                  assetName: "assets/icons/icons/User.svg"),
+                  hintIcon: "assets/icons/icons/User.svg"),
               TextFieldWidget(
-                  emailTextEditingController: passwordTextEditingController,
+                  emailTextEditingController: lastNameTextEditingController,
                   labelText: "Last Name",
                   hintText: "Enter your last name",
-                  assetName: "assets/icons/icons/User.svg"),
+                  hintIcon: "assets/icons/icons/User.svg"),
               TextFieldWidget(
                   emailTextEditingController:
-                      confirmPasswordTextEditingController,
+                      phoneTextEditingController,
                   labelText: "Phone Number",
                   hintText: "Enter your phone number",
-                  assetName: "assets/icons/icons/Phone.svg"),
+                  hintIcon: "assets/icons/icons/Phone.svg"),
               TextFieldWidget(
                   emailTextEditingController:
-                      confirmPasswordTextEditingController,
+                      addressTextEditingController,
                   labelText: "Address",
                   hintText: "Enter your address",
-                  assetName: "assets/icons/icons/Location point.svg"),
+                  hintIcon: "assets/icons/icons/Location point.svg"),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: CustomButton(buttonText: "Continue", onTap: () {}),
+                child: CustomButton(buttonText: "Continue", onTap: () {
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const HomeScreen(),), (route) => false);
+                  General.savePrefString("Name", "$firstNameTextEditingController $lastNameTextEditingController");
+                  General.savePrefString("Name", "$phoneTextEditingController");
+                  General.savePrefString("Name", "$addressTextEditingController");
+                }),
               ),
               const SizedBox(
                 height: 65,

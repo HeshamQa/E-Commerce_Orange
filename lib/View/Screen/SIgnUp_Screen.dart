@@ -1,26 +1,25 @@
-import 'package:ecommerceorange/Screen/Forget_Password.dart';
-import 'package:ecommerceorange/Screen/Home_Screen.dart';
-import 'package:ecommerceorange/Screen/SIgnUp_Screen.dart';
-import 'package:ecommerceorange/Wedgit/Button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import '../../General.dart';
+import '../Wedgit/Button.dart';
 import '../Wedgit/TextFieldWidget.dart';
+import 'SignUp_2_Screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController emailTextEditingController = TextEditingController();
-  TextEditingController passwordTextEditingController = TextEditingController();
-  bool check = false;
-
+class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailTextEditingController = TextEditingController();
+    TextEditingController passwordTextEditingController =
+        TextEditingController();
+    TextEditingController confirmPasswordTextEditingController =
+        TextEditingController();
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -28,10 +27,10 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             children: [
               const SizedBox(
-                height: 50,
+                height: 38,
               ),
               const Text(
-                'Welcome back',
+                'Register Account',
                 style: TextStyle(
                   fontFamily: 'muli',
                   fontSize: 30,
@@ -39,88 +38,54 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 8,
               ),
               const Text(
-                "Sign in with your Email & password\n"
-                "or continue with social media",
+                "Complete your details or continue\n"
+                "with social media",
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 textWidthBasis: TextWidthBasis.parent,
                 style: TextStyle(fontFamily: 'muli', color: Colors.grey),
               ),
               const SizedBox(
-                height: 75,
+                height: 42,
               ),
               TextFieldWidget(
                   emailTextEditingController: emailTextEditingController,
                   labelText: "Email",
                   hintText: "Enter your Email",
-                  assetName: "assets/icons/icons/Mail.svg"),
+                  hintIcon: "assets/icons/icons/Mail.svg"),
               TextFieldWidget(
                   emailTextEditingController: passwordTextEditingController,
                   labelText: "Password",
                   hintText: "Enter your Password",
-                  assetName: "assets/icons/icons/Lock.svg"),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15),
-                child: Row(
-                  children: [
-                    Checkbox(
-                      value: check,
-                      onChanged: (value) {
-                        setState(() {
-                          check = value!;
-                        });
-                      },
-                      fillColor: const MaterialStatePropertyAll(Colors.grey),
-                    ),
-                    const Text(
-                      "Remember me",
-                      style: TextStyle(
-                        fontFamily: 'muli',
-                        color: Colors.grey,
-                      ),
-                    ),
-                    const Spacer(),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  const ForgetPasswordScreen(),
-                            ));
-                      },
-                      child: const Text(
-                        "Forget Password?",
-                        style: TextStyle(
-                          fontFamily: 'muli',
-                          color: Colors.grey,
-                          decoration: TextDecoration.underline,
-                          decorationColor: Colors.grey,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+                  hintIcon: "assets/icons/icons/Lock.svg"),
+              TextFieldWidget(
+                  emailTextEditingController:
+                      confirmPasswordTextEditingController,
+                  labelText: "Confirm Password",
+                  hintText: "Re-Enter your Password",
+                  hintIcon: "assets/icons/icons/Lock.svg"),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: CustomButton(
                     buttonText: "Continue",
                     onTap: () {
-                      Navigator.pushAndRemoveUntil(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const HomeScreen(),
-                          ),
-                          (route) => false);
+                            builder: (context) => const AnimatedSwitcher(
+                                duration: Duration(microseconds: 1000),
+                                switchInCurve: Curves.easeIn,
+                                child: SignUp2Screen()),
+                          ));
+                      General.savePrefString("Email", emailTextEditingController.toString());
+                      General.savePrefString("Password", passwordTextEditingController.toString());
                     }),
               ),
               const SizedBox(
-                height: 40,
+                height: 65,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -179,28 +144,13 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 25,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    "Don't have an account? ",
-                    style: TextStyle(fontFamily: 'muli', color: Colors.grey),
-                  ),
-                  InkWell(
-                    child: const Text(
-                      "Sign Up ",
-                      style: TextStyle(
-                          fontFamily: 'muli', color: Colors.deepOrange),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const SignUpScreen(),
-                          ));
-                    },
-                  ),
-                ],
+              const Text(
+                "By continuing you're confirm that you agree\nTerm and Policy",
+                style: TextStyle(
+                  fontFamily: 'muli',
+                  color: Colors.grey,
+                ),
+                textAlign: TextAlign.center,
               ),
             ],
           ),
