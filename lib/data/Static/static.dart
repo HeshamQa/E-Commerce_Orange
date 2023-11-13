@@ -1,6 +1,9 @@
+import 'dart:ui';
+
+import 'package:flutter/material.dart';
+
 import '../../Model/CategoriesModel.dart';
-import '../../Model/FavoriteModel.dart';
-import '../../Model/PopularModel.dart';
+import '../../Model/ProductModel.dart';
 import '../../Model/SpecialModel.dart';
 import '../../Model/onBoardingModel.dart';
 
@@ -30,11 +33,77 @@ List<SpecialModel> specialModelList=[
   SpecialModel(image: "assets/images/Image Banner 2.png", title: "SmartPhone", subTitle: " Brands", brandCount: 10),
   SpecialModel(image: "assets/images/Image Banner 3.png", title: "Fashion", brandCount: 5, subTitle: " Brands")
 ];
-List<PopularModel> popularModelList=[
-  PopularModel(image: "assets/images/Image Popular Product 1.png", title: "Wireless Controller For PS4", price: 65.99),
-  PopularModel(image: "assets/images/Image Popular Product 2.png", title: "Nike Sport White - Man Pant", price: 50.5),
-  PopularModel(image: "assets/images/Image Popular Product 3.png", title: "Gloves And Hat Polygon", price: 36.99),
+List<Product> productList = [
+  Product(
+    id: 1,
+    images: [
+      "assets/images/ps4_console_white_1.png",
+      "assets/images/ps4_console_white_2.png",
+      "assets/images/ps4_console_white_3.png",
+      "assets/images/ps4_console_white_4.png",
+    ],
+    colors: [
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
+      Colors.white,
+    ],
+    title: "Wireless Controller for PS4™",
+    price: 64.99,
+    description: description,
+    rating: 4.8,
+    isFavourite: true,
+    isPopular: true,
+  ),
+  Product(
+    id: 2,
+    images: [
+      "assets/images/Image Popular Product 2.png",
+    ],
+    colors: [
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
+      Colors.white,
+    ],
+    title: "Nike Sport White - Man Pant",
+    price: 50.5,
+    description: description,
+    rating: 4.1,
+    isPopular: true,
+  ),
+  Product(
+    id: 3,
+    images: [
+      "assets/images/glap.png",
+    ],
+    colors: [
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
+      Colors.white,
+    ],
+    title: "Gloves XC Omega - Polygon",
+    price: 36.55,
+    description: description,
+    rating: 4.1,
+    isFavourite: true,
+    isPopular: true,
+  ),
+  Product(
+    id: 4,
+    images: [
+      "assets/images/wireless headset.png",
+    ],
+    colors: [
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
+      Colors.white,
+    ],
+    title: "Logitech Head",
+    price: 20.20,
+    description: description,
+    rating: 4.1,
+  ),
 ];
-Set<FavoriteModel> favoriteModelList= {
-
-};

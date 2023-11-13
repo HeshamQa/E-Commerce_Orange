@@ -1,7 +1,5 @@
+import 'package:ecommerceorange/View/Screen/Home_Screen/Home_Screen.dart';
 import 'package:flutter/material.dart';
-
-import 'View/Screen/OnBoarding_Screen.dart';
-
 void main() {
   runApp(const MyApp());
 }
@@ -18,7 +16,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
         useMaterial3: true,
       ),
-      home: const onBoardingScreen(),
+      home: const HomeScreen(),
     );
   }
 }
