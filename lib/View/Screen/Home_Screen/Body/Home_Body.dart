@@ -97,7 +97,7 @@ class _HomeBodyState extends State<HomeBody> {
                 ],
               ),
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 30),
 
             ///Image Banner Text Only!!
             Container(
@@ -125,7 +125,7 @@ class _HomeBodyState extends State<HomeBody> {
                             fontWeight: FontWeight.w700)),
                   ]),
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 30),
 
             ///Categories
             SizedBox(
@@ -143,7 +143,7 @@ class _HomeBodyState extends State<HomeBody> {
                           fixedSize:
                               const MaterialStatePropertyAll(Size(60, 60)),
                           backgroundColor: MaterialStatePropertyAll(
-                              Colors.deepOrange.withOpacity(0.15)),
+                              Colors.orange.withOpacity(0.2)),
                           shape: MaterialStatePropertyAll(
                             RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
@@ -157,7 +157,7 @@ class _HomeBodyState extends State<HomeBody> {
                       Padding(
                         padding: const EdgeInsets.only(top: 6.0),
                         child: SizedBox(
-                            width: 40,
+                            width: 50,
                             child: Text(
                               categoriesModelList[index].name,
                               textAlign: TextAlign.center,
@@ -304,7 +304,7 @@ class _HomeBodyState extends State<HomeBody> {
                                   child: Image.asset(
                                     productList[index].images[0],
                                     width: 100,
-                                    height: 100,
+                                    height: 90,
                                     fit: BoxFit.fill,
                                   ),
                                 ),
