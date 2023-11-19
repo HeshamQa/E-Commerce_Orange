@@ -1,24 +1,21 @@
-import 'dart:ui';
-
 class Product {
   final int id;
-  final String title, description;
-  final List<String> images;
-  final List<Color> colors;
-  final double rating, price;
-  bool isFavourite, isPopular;
+  final String title;
+  final String images;
+  var price;
 
   Product({
     required this.id,
     required this.images,
-    required this.colors,
-    this.rating = 0.0,
     required this.title,
     required this.price,
-    required this.description,
-    this.isFavourite=false,
-    this.isPopular=false,
   });
+  factory Product.fromJson(var json){
+    return Product(
+      id: json['id'],
+      title: json['title'],
+      price: json['price'],
+      images: json['image'],
+    );
+  }
 }
-const String description =
-    "Wireless Controller for PS4™ gives you what you want in your gaming from over precision control your games to sharing …";

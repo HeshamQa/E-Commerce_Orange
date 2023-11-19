@@ -29,7 +29,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               const Text(
                 'Forget Password',
                 style: TextStyle(
-                  fontFamily: 'muli',
+
                   fontSize: 30,
                   fontWeight: FontWeight.w700,
                 ),
@@ -43,7 +43,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 textWidthBasis: TextWidthBasis.parent,
-                style: TextStyle(fontFamily: 'muli', color: Colors.grey),
+                style: TextStyle( color: Colors.grey),
               ),
               const SizedBox(
                 height: 70,
@@ -76,13 +76,13 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 children: [
                   const Text(
                     "Don't have an account? ",
-                    style: TextStyle(fontFamily: 'muli', color: Colors.grey),
+                    style: TextStyle( color: Colors.grey),
                   ),
                   InkWell(
                     child: const Text(
                       "Sign Up ",
                       style: TextStyle(
-                          fontFamily: 'muli', color: Colors.deepOrange),
+                           color: Colors.deepOrange),
                     ),
                     onTap: () {
                       Navigator.push(

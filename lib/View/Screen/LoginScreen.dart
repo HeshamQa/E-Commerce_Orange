@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
             const Text(
               'Welcome back',
               style: TextStyle(
-                fontFamily: 'muli',
+
                 fontSize: 30,
                 fontWeight: FontWeight.w700,
               ),
@@ -43,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
               "Sign in with your Email & password\n"
               "or continue with social media",
               textAlign: TextAlign.center,
-              style: TextStyle(fontFamily: 'muli', color: Colors.grey),
+              style: TextStyle( color: Colors.grey),
             ),
             const SizedBox(
               height: 75,
@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const Text(
                     "Remember me",
                     style: TextStyle(
-                      fontFamily: 'muli',
+
                       color: Colors.grey,
                     ),
                   ),
@@ -93,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: const Text(
                       "Forget Password?",
                       style: TextStyle(
-                        fontFamily: 'muli',
+
                         color: Colors.grey,
                         decoration: TextDecoration.underline,
                         decorationColor: Colors.grey,
@@ -139,13 +139,13 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 const Text(
                   "Don't have an account? ",
-                  style: TextStyle(fontFamily: 'muli', color: Colors.grey),
+                  style: TextStyle( color: Colors.grey),
                 ),
                 InkWell(
                   child: const Text(
                     "Sign Up ",
                     style: TextStyle(
-                        fontFamily: 'muli', color: Colors.deepOrange),
+                         color: Colors.deepOrange),
                   ),
                   onTap: () {
                     Navigator.push(

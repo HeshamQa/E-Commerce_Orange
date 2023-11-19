@@ -1,7 +1,8 @@
-import 'package:ecommerceorange/View/Screen/Details_Screen/Details_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../Controller/ProductController.dart';
 import '../../../../data/Static/static.dart';
 
 class HomeBody extends StatefulWidget {
@@ -13,7 +14,12 @@ class HomeBody extends StatefulWidget {
 
 class _HomeBodyState extends State<HomeBody> {
   final int _counter = 0;
-
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<ProductController>(context, listen: false)
+        .getProduct();
+  }
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -41,7 +47,7 @@ class _HomeBodyState extends State<HomeBody> {
                     elevation: MaterialStateProperty.all(0),
                     hintText: "Search...",
                     hintStyle: const MaterialStatePropertyAll(
-                        TextStyle(fontFamily: 'muli', color: Colors.grey)),
+                        TextStyle( color: Colors.grey)),
                   ),
                   const Spacer(),
                   IconButton(
@@ -85,7 +91,7 @@ class _HomeBodyState extends State<HomeBody> {
                         child: Text(
                           "$_counter",
                           style: const TextStyle(
-                            fontFamily: 'muli',
+
                             color: Colors.white,
                             fontSize: 10,
                           ),
@@ -114,13 +120,13 @@ class _HomeBodyState extends State<HomeBody> {
                     Text("A summer surprise",
                         style: TextStyle(
                             color: Colors.white,
-                            fontFamily: 'muli',
+
                             fontSize: 17)),
                     Spacer(),
                     Text("CashBack 20%",
                         style: TextStyle(
                             color: Colors.white,
-                            fontFamily: 'muli',
+
                             fontSize: 28,
                             fontWeight: FontWeight.w700)),
                   ]),
@@ -162,7 +168,7 @@ class _HomeBodyState extends State<HomeBody> {
                               categoriesModelList[index].name,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
-                                  fontFamily: 'muli', color: Colors.grey),
+                                   color: Colors.grey),
                             )),
                       ),
                     ],
@@ -179,13 +185,13 @@ class _HomeBodyState extends State<HomeBody> {
                 children: [
                   const Text("Special For You",
                       style: TextStyle(
-                          fontFamily: 'muli',
+
                           fontWeight: FontWeight.bold,
                           fontSize: 20)),
                   InkWell(
                     child: const Text(
                       "See More",
-                      style: TextStyle(fontFamily: 'muli', color: Colors.grey),
+                      style: TextStyle( color: Colors.grey),
                     ),
                     onTap: () {},
                   ),
@@ -228,13 +234,13 @@ class _HomeBodyState extends State<HomeBody> {
                             children: [
                               Text(specialModelList[index].title,
                                   style: const TextStyle(
-                                      fontFamily: 'muli',
+
                                       color: Colors.white,
                                       fontSize: 20)),
                               Text(
                                 "${specialModelList[index].brandCount}${specialModelList[index].subTitle}",
                                 style: const TextStyle(
-                                    fontFamily: 'muli', color: Colors.white),
+                                     color: Colors.white),
                               ),
                             ],
                           ),
@@ -255,13 +261,13 @@ class _HomeBodyState extends State<HomeBody> {
                 children: [
                   const Text("Popular Product",
                       style: TextStyle(
-                          fontFamily: 'muli',
+
                           fontWeight: FontWeight.bold,
                           fontSize: 20)),
                   InkWell(
                     child: const Text(
                       "See More",
-                      style: TextStyle(fontFamily: 'muli', color: Colors.grey),
+                      style: TextStyle( color: Colors.grey),
                     ),
                     onTap: () {},
                   ),
@@ -273,104 +279,101 @@ class _HomeBodyState extends State<HomeBody> {
             ///Popular products Component
             SizedBox(
               height: 295,
-              child: ListView.builder(
-                itemCount: productList.length,
-                padding: const EdgeInsets.all(10),
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  if (productList[index].isPopular){
-                    return Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 10),
-                      child: InkWell(
-                        onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => DetailsScreen(
-                                  productId: productList[index].id),
-                            )),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(30),
-                              decoration: BoxDecoration(
-                                  color: Colors.grey.shade200,
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: Hero(
-                                  tag: productList[index].id,
-                                  child: Image.asset(
-                                    productList[index].images[0],
-                                    width: 100,
-                                    height: 90,
-                                    fit: BoxFit.fill,
+              child: Consumer<ProductController>(
+                builder:  (context, value, child) {
+                  return ListView.builder(
+                    itemCount: value.productList.length,
+                    padding: const EdgeInsets.all(10),
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      print(value.productList.length);
+                        return Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                          child: InkWell(
+                             onTap: (){},
+                            // => Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //       builder: (context) => DetailsScreen(
+                            //           productId: productList[index].id),
+                            //     )),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(30),
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey.shade200,
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: //Hero(
+                                      // tag: productList[index].id,
+                                       Image.network(
+                                        value.productList[index].images,
+                                        width: 100,
+                                        height: 100,
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
+                                  ),
+                                //),
+                                SizedBox(
+                                  width: 145,
+                                  child: Text(
+                                    maxLines: 3,
+                                    value.productList[index].title,
+                                    style: const TextStyle(
+
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w400),
                                   ),
                                 ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 145,
-                              child: Text(
-                                productList[index].title,
-                                style: const TextStyle(
-                                    fontFamily: 'muli',
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 162,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "\$${productList[index].price}",
-                                    style: const TextStyle(
-                                        fontFamily: 'muli',
-                                        fontSize: 20,
-                                        color: Colors.deepOrange,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  IconButton(
-                                    style: ButtonStyle(
-                                      fixedSize: const MaterialStatePropertyAll(
-                                          Size(20, 20)),
-                                      backgroundColor: MaterialStatePropertyAll(
-                                        productList[index].isFavourite
-                                            ? const Color(0xFFFFE6E6)
-                                            : const Color(0xFFF5F6F9),
+                                SizedBox(
+                                  width: 162,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "\$${value.productList[index].price}",
+                                        style: const TextStyle(
+
+                                            fontSize: 20,
+                                            color: Colors.deepOrange,
+                                            fontWeight: FontWeight.bold),
                                       ),
-                                      shape: const MaterialStatePropertyAll(
-                                          CircleBorder()),
-                                    ),
-                                    highlightColor: Colors.transparent,
-                                    onPressed: () {
-                                      setState(() {
-                                        productList[index].isFavourite=!(productList[index].isFavourite);
-                                      });
-                                    },
-                                    icon: SvgPicture.asset(
-                                        "assets/icons/icons/Heart Icon_2.svg",
-                                        colorFilter: ColorFilter.mode(
-                                            productList[index].isFavourite
-                                                ? Colors.red
-                                                : Colors.grey,
-                                            BlendMode.srcIn)),
+                                      IconButton(
+                                        style: const ButtonStyle(
+                                          fixedSize: MaterialStatePropertyAll(
+                                              Size(20, 20)),
+                                          backgroundColor: MaterialStatePropertyAll(
+
+                                                Color(0xFFFFE6E6),
+                                          ),
+                                          shape: MaterialStatePropertyAll(
+                                              CircleBorder()),
+                                        ),
+                                        highlightColor: Colors.transparent,
+                                        onPressed: () {},
+                                        icon: SvgPicture.asset(
+                                            "assets/icons/icons/Heart Icon_2.svg",
+                                            colorFilter: ColorFilter.mode(
+                                              Colors.red,
+                                                BlendMode.srcIn)),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }
-                  return null;
-                },
+                          ),
+                        );
+                    },
+                  );
+                }
               ),
             ),
           ],

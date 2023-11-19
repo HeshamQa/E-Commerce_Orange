@@ -26,7 +26,7 @@ class _OTPScreenState extends State<OTPScreen> {
               const Text(
                 'OTP Verification',
                 style: TextStyle(
-                  fontFamily: 'muli',
+
                   fontSize: 30,
                   fontWeight: FontWeight.w700,
                 ),
@@ -40,7 +40,7 @@ class _OTPScreenState extends State<OTPScreen> {
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 textWidthBasis: TextWidthBasis.parent,
-                style: TextStyle(fontFamily: 'muli', color: Colors.grey),
+                style: TextStyle( color: Colors.grey),
               ),
               const SizedBox(
                 height: 70,
@@ -51,19 +51,19 @@ class _OTPScreenState extends State<OTPScreen> {
                   cursorColor: Colors.deepOrange,
                   styles: const [
                     TextStyle(
-                      fontFamily: 'muli',
+
                       height: 2,
                     ),
                     TextStyle(
-                      fontFamily: 'muli',
+
                       height: 2,
                     ),
                     TextStyle(
-                      fontFamily: 'muli',
+
                       height: 2,
                     ),
                     TextStyle(
-                      fontFamily: 'muli',
+
                       height: 2,
                     ),
                   ],
@@ -90,7 +90,7 @@ class _OTPScreenState extends State<OTPScreen> {
                 children: [
                   Text(
                     "ReSend OTP Code ",
-                    style: TextStyle(fontFamily: 'muli', color: Colors.grey),
+                    style: TextStyle( color: Colors.grey),
                   ),
                 ],
               ),

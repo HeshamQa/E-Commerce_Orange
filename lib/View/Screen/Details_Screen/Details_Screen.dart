@@ -1,4 +1,4 @@
-import 'package:ecommerceorange/Model/ProductModel.dart';
+import 'package:ecommerceorange/Model/ProductsDetails.dart';
 import 'package:ecommerceorange/View/Screen/Details_Screen/Components/Product_Imeges.dart';
 import 'package:ecommerceorange/data/Static/static.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +18,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final Product product = getProductDetails(widget.productId);
+    final ProductDetails product = getProductDetails(widget.productId);
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(AppBar().preferredSize.height),
@@ -37,11 +37,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
   }
 }
 
-Product getProductDetails(int id) {
-  for (Product p in productList) {
+ProductDetails getProductDetails(int id) {
+  for (ProductDetails p in productDetailsList) {
     if (p.id == id) {
       return p;
     }
   }
-  return productList[id - 1];
+  return productDetailsList[id - 1];
 }

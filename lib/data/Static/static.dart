@@ -1,9 +1,6 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-
 import '../../Model/CategoriesModel.dart';
-import '../../Model/ProductModel.dart';
+import '../../Model/ProductsDetails.dart';
 import '../../Model/SpecialModel.dart';
 import '../../Model/onBoardingModel.dart';
 
@@ -33,8 +30,8 @@ List<SpecialModel> specialModelList=[
   SpecialModel(image: "assets/images/Image Banner 2.png", title: "SmartPhone", subTitle: " Brands", brandCount: 10),
   SpecialModel(image: "assets/images/Image Banner 3.png", title: "Fashion", brandCount: 5, subTitle: " Brands")
 ];
-List<Product> productList = [
-  Product(
+List<ProductDetails> productDetailsList = [
+  ProductDetails(
     id: 1,
     images: [
       "assets/images/ps4_console_white_1.png",
@@ -55,7 +52,7 @@ List<Product> productList = [
     isFavourite: true,
     isPopular: true,
   ),
-  Product(
+  ProductDetails(
     id: 2,
     images: [
       "assets/images/Image Popular Product 2.png",
@@ -72,7 +69,7 @@ List<Product> productList = [
     rating: 4.1,
     isPopular: true,
   ),
-  Product(
+  ProductDetails(
     id: 3,
     images: [
       "assets/images/glap.png",
@@ -90,7 +87,7 @@ List<Product> productList = [
     isFavourite: true,
     isPopular: true,
   ),
-  Product(
+  ProductDetails(
     id: 4,
     images: [
       "assets/images/wireless headset.png",

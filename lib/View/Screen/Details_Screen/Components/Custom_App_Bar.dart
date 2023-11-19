@@ -1,7 +1,6 @@
+import 'package:ecommerceorange/Model/ProductsDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../../../../Model/ProductModel.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
@@ -9,7 +8,7 @@ class CustomAppBar extends StatelessWidget {
     required this.product,
   });
 
-  final Product product;
+  final ProductDetails product;
 
   @override
   Widget build(BuildContext context) {

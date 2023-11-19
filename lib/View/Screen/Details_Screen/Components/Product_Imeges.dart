@@ -1,10 +1,9 @@
+import 'package:ecommerceorange/Model/ProductsDetails.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../Model/ProductModel.dart';
 
 class ProductImages extends StatefulWidget {
   const ProductImages({super.key,required this.product});
-  final Product product;
+  final ProductDetails product;
   @override
   State<ProductImages> createState() => Product_ImagesState();
 }

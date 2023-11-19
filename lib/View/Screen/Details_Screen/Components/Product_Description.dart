@@ -1,8 +1,7 @@
+import 'package:ecommerceorange/Model/ProductsDetails.dart';
 import 'package:ecommerceorange/View/Screen/Details_Screen/Components/Product_Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../../../../Model/ProductModel.dart';
 import 'TopRoundedContainer.dart';
 
 class ProductDescription extends StatelessWidget {
@@ -11,7 +10,7 @@ class ProductDescription extends StatelessWidget {
     required this.product,
   });
 
-  final Product product;
+  final ProductDetails product;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,7 @@ class ProductDescription extends StatelessWidget {
             child: Text(
               product.title,
               style: const TextStyle(
-                fontFamily: 'muli',
+
                 fontSize: 20,
                 fontWeight: FontWeight.w500,
               ),
@@ -61,7 +60,7 @@ class ProductDescription extends StatelessWidget {
             child: Text(
               product.description,
               style: const TextStyle(
-                fontFamily: 'muli',
+
                 fontSize: 15,
                 color: Colors.grey,
               ),
@@ -75,7 +74,7 @@ class ProductDescription extends StatelessWidget {
                 "See More Details >",
                 style: TextStyle(
                   color: Colors.deepOrange,
-                  fontFamily: 'muli',
+
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
                 ),

@@ -45,7 +45,7 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
           Text(
             onBoardingList[1].title!,
             style: const TextStyle(
-              fontFamily: 'muli',
+
               color: Color(0xfffc7444),
               fontWeight: FontWeight.w700,
               fontSize: 40,
@@ -54,7 +54,7 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
           Text(
             onBoardingList[1].body!,
             style: const TextStyle(
-              fontFamily: 'muli',
+
               color: Color(0xff949494),
               fontWeight: FontWeight.normal,
               fontSize: 17,

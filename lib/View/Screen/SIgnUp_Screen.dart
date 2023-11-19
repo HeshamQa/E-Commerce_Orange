@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../General.dart';
@@ -32,7 +33,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               const Text(
                 'Register Account',
                 style: TextStyle(
-                  fontFamily: 'muli',
+
                   fontSize: 30,
                   fontWeight: FontWeight.w700,
                 ),
@@ -46,7 +47,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 textWidthBasis: TextWidthBasis.parent,
-                style: TextStyle(fontFamily: 'muli', color: Colors.grey),
+                style: TextStyle( color: Colors.grey),
               ),
               const SizedBox(
                 height: 42,
@@ -71,15 +72,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: CustomButton(
                     buttonText: "Continue",
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const AnimatedSwitcher(
-                                duration: Duration(microseconds: 1000),
-                                switchInCurve: Curves.easeIn,
-                                child: SignUp2Screen()),
-                          ));
+                    onTap: () async {
+                      // try {
+                      // //   final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                      // //     email: emailTextEditingController.text,
+                      // //     password: passwordTextEditingController.text,
+                      // //   );
+                      // //   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignUp2Screen(),));
+                      // // } on FirebaseAuthException catch (e) {
+                      // //   if (e.code == 'weak-password') {
+                      // //     print('The password provided is too weak.');
+                      // //   } else if (e.code == 'email-already-in-use') {
+                      // //     print('The account already exists for that email.');
+                      // //   }
+                      // // } catch (e) {
+                      // //   print(e);
+                      // // }
                       General.savePrefString("Email", emailTextEditingController.toString());
                       General.savePrefString("Password", passwordTextEditingController.toString());
                     }),
@@ -147,7 +155,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               const Text(
                 "By continuing you're confirm that you agree\nTerm and Policy",
                 style: TextStyle(
-                  fontFamily: 'muli',
+
                   color: Colors.grey,
                 ),
                 textAlign: TextAlign.center,

@@ -1,4 +1,4 @@
-import 'package:ecommerceorange/Model/ProductModel.dart';
+import 'package:ecommerceorange/Model/ProductsDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'TopRoundedContainer.dart';
@@ -7,7 +7,7 @@ import 'add_To_Cart_Button.dart';
 class ProductColors extends StatefulWidget {
   const ProductColors({super.key, required this.product});
 
-  final Product product;
+  final ProductDetails product;
 
   @override
   State<ProductColors> createState() => _ProductColorsState();

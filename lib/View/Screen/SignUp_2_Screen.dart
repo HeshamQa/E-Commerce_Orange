@@ -33,7 +33,7 @@ class _SignUp2ScreenState extends State<SignUp2Screen> {
               const Text(
                 'Complete Profile',
                 style: TextStyle(
-                  fontFamily: 'muli',
+
                   fontSize: 30,
                   fontWeight: FontWeight.w700,
                 ),
@@ -47,7 +47,7 @@ class _SignUp2ScreenState extends State<SignUp2Screen> {
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 textWidthBasis: TextWidthBasis.parent,
-                style: TextStyle(fontFamily: 'muli', color: Colors.grey),
+                style: TextStyle( color: Colors.grey),
               ),
               const SizedBox(
                 height: 38,
@@ -89,7 +89,7 @@ class _SignUp2ScreenState extends State<SignUp2Screen> {
               const Text(
                 "By continuing you're confirm that you agree\nwith our Term and Condition",
                 style: TextStyle(
-                  fontFamily: 'muli',
+
                   color: Colors.grey,
                 ),
                 textAlign: TextAlign.center,
