@@ -1,12 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:provider/provider.dart';
-
-import '../../../../Controller/ProductController.dart';
 import '../../../../data/Static/static.dart';
+import '../../Details_Screen/Details_Screen.dart';
 
 class HomeBody extends StatefulWidget {
-  const HomeBody({super.key});
+  List<dynamic> fav;
+  List<QueryDocumentSnapshot> data;
+  HomeBody({super.key, required this.fav, required this.data});
 
   @override
   State<HomeBody> createState() => _HomeBodyState();
@@ -17,8 +18,6 @@ class _HomeBodyState extends State<HomeBody> {
   @override
   void initState() {
     super.initState();
-    Provider.of<ProductController>(context, listen: false)
-        .getProduct();
   }
   @override
   Widget build(BuildContext context) {
@@ -279,101 +278,99 @@ class _HomeBodyState extends State<HomeBody> {
             ///Popular products Component
             SizedBox(
               height: 295,
-              child: Consumer<ProductController>(
-                builder:  (context, value, child) {
-                  return ListView.builder(
-                    itemCount: value.productList.length,
-                    padding: const EdgeInsets.all(10),
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      print(value.productList.length);
-                        return Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
-                          child: InkWell(
-                             onTap: (){},
-                            // => Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //       builder: (context) => DetailsScreen(
-                            //           productId: productList[index].id),
-                            //     )),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  padding: const EdgeInsets.all(30),
-                                  decoration: BoxDecoration(
-                                      color: Colors.grey.shade200,
-                                      borderRadius: BorderRadius.circular(20)),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child: //Hero(
-                                      // tag: productList[index].id,
-                                       Image.network(
-                                        value.productList[index].images,
-                                        width: 100,
-                                        height: 100,
-                                        fit: BoxFit.fill,
-                                      ),
-                                    ),
-                                  ),
-                                //),
-                                SizedBox(
-                                  width: 145,
-                                  child: Text(
-                                    maxLines: 3,
-                                    value.productList[index].title,
-                                    style: const TextStyle(
-
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w400),
+              child: ListView.builder(
+                itemCount: widget.data.length,
+                padding: const EdgeInsets.all(10),
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      child: InkWell(
+                         onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DetailsScreen(
+                                  index:index,data: widget.data),
+                            )),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.all(30),
+                              decoration: BoxDecoration(
+                                  color: Colors.grey.shade200,
+                                  borderRadius: BorderRadius.circular(20)),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: //Hero(
+                                  // tag: productList[index].id,
+                                   Image.network(
+                                    widget.data[index]['image'][0],
+                                    width: 100,
+                                    height: 100,
+                                    fit: BoxFit.fill,
                                   ),
                                 ),
-                                SizedBox(
-                                  width: 162,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        "\$${value.productList[index].price}",
-                                        style: const TextStyle(
-
-                                            fontSize: 20,
-                                            color: Colors.deepOrange,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      IconButton(
-                                        style: const ButtonStyle(
-                                          fixedSize: MaterialStatePropertyAll(
-                                              Size(20, 20)),
-                                          backgroundColor: MaterialStatePropertyAll(
-
-                                                Color(0xFFFFE6E6),
-                                          ),
-                                          shape: MaterialStatePropertyAll(
-                                              CircleBorder()),
-                                        ),
-                                        highlightColor: Colors.transparent,
-                                        onPressed: () {},
-                                        icon: SvgPicture.asset(
-                                            "assets/icons/icons/Heart Icon_2.svg",
-                                            colorFilter: ColorFilter.mode(
-                                              Colors.red,
-                                                BlendMode.srcIn)),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
+                              ),
+                            //),
+                            SizedBox(
+                              width: 145,
+                              child: Text(
+                                widget.data[index]['name'],
+                                maxLines: 3,
+                                style: const TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400),
+                              ),
                             ),
-                          ),
-                        );
-                    },
-                  );
-                }
+                            SizedBox(
+                              width: 162,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "\$${widget.data[index]['price']}",
+                                    style: const TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.deepOrange,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  IconButton(
+                                    style: ButtonStyle(
+                                      fixedSize: const MaterialStatePropertyAll(
+                                          Size(20, 20)),
+                                      backgroundColor: MaterialStatePropertyAll(
+
+                                          widget.fav.contains(widget.data[index])?const Color(
+                                              0x35ff2415):
+                                          const Color(0x88ffffff),
+                                      ),
+                                      shape: const MaterialStatePropertyAll(
+                                          CircleBorder()),
+                                    ),
+                                    highlightColor: Colors.transparent,
+                                    onPressed: () {
+                                      widget.fav.contains(widget.data[index])?widget.fav.remove(widget.data[index]):widget.fav.add(widget.data[index]);
+                                      setState(() {});
+                                    },
+                                    icon: SvgPicture.asset(
+                                        "assets/icons/icons/Heart Icon_2.svg",
+                                        colorFilter: ColorFilter.mode(
+                                          widget.fav.contains(widget.data[index])?const Color(
+                                              0xfff80505):Colors.grey,
+                                            BlendMode.srcIn)),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                },
               ),
             ),
           ],

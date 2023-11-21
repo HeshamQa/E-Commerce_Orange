@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../General.dart';
@@ -16,6 +15,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
+
     TextEditingController emailTextEditingController = TextEditingController();
     TextEditingController passwordTextEditingController =
         TextEditingController();
@@ -53,16 +53,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: 42,
               ),
               TextFieldWidget(
+                  obscureText: false,
                   emailTextEditingController: emailTextEditingController,
                   labelText: "Email",
                   hintText: "Enter your Email",
                   hintIcon: "assets/icons/icons/Mail.svg"),
               TextFieldWidget(
+                  obscureText: true,
                   emailTextEditingController: passwordTextEditingController,
                   labelText: "Password",
                   hintText: "Enter your Password",
                   hintIcon: "assets/icons/icons/Lock.svg"),
               TextFieldWidget(
+                  obscureText: true,
                   emailTextEditingController:
                       confirmPasswordTextEditingController,
                   labelText: "Confirm Password",
@@ -73,21 +76,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: CustomButton(
                     buttonText: "Continue",
                     onTap: () async {
-                      // try {
-                      // //   final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                      // //     email: emailTextEditingController.text,
-                      // //     password: passwordTextEditingController.text,
-                      // //   );
-                      // //   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignUp2Screen(),));
-                      // // } on FirebaseAuthException catch (e) {
-                      // //   if (e.code == 'weak-password') {
-                      // //     print('The password provided is too weak.');
-                      // //   } else if (e.code == 'email-already-in-use') {
-                      // //     print('The account already exists for that email.');
-                      // //   }
-                      // // } catch (e) {
-                      // //   print(e);
-                      // // }
+                        if (passwordTextEditingController.text ==
+                            confirmPasswordTextEditingController.text) {
+                          Navigator.pushReplacement(
+                              context, MaterialPageRoute(builder: (context) =>
+                              SignUp2Screen(email: emailTextEditingController,
+                                  password: passwordTextEditingController),));
+                          print("${passwordTextEditingController.text}");
+                        }
+                        else {
+                          showDialog(context: context, builder: (context) =>
+                              Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                          "ConfirmPassword Isn't the same",
+                                          style: TextStyle(color: Colors.white,
+                                              fontSize: 20)),
+                                      TextButton(onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                        child: const Text("Back",),
+                                        style: ButtonStyle(
+                                            backgroundColor: MaterialStatePropertyAll(
+                                                Colors.white)),)
+                                    ],
+                                  )),
+                          );
+                        }
                       General.savePrefString("Email", emailTextEditingController.toString());
                       General.savePrefString("Password", passwordTextEditingController.toString());
                     }),

@@ -49,6 +49,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 height: 70,
               ),
               TextFieldWidget(
+                obscureText: false,
                   emailTextEditingController: emailTextEditingController,
                   labelText: "Email",
                   hintText: "Enter your Email",

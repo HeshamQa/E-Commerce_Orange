@@ -1,14 +1,15 @@
-import 'package:ecommerceorange/Model/ProductsDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CustomAppBar extends StatelessWidget {
+  final List<dynamic> data;
+
+  final int index;
+
   const CustomAppBar({
     super.key,
-    required this.product,
+    required this.data, required this.index,
   });
-
-  final ProductDetails product;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class CustomAppBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(product.rating.toString()),
+              Text('${data[index]['rating']}'),
               SvgPicture.asset("assets/icons/icons/Star Icon.svg"),
             ],
           ),

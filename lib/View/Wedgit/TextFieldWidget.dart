@@ -8,8 +8,10 @@ class TextFieldWidget extends StatelessWidget {
     required this.hintText,
     required this.labelText,
     required this.hintIcon,
+    required this.obscureText,
   });
 
+  final bool obscureText;
   final String hintText;
   final String labelText;
   final String hintIcon;
@@ -20,6 +22,7 @@ class TextFieldWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child: TextField(
+        obscureText: obscureText,
         controller: emailTextEditingController,
         decoration: InputDecoration(
           focusedBorder: OutlineInputBorder(

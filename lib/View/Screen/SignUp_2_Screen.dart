@@ -1,11 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerceorange/General.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../Wedgit/Button.dart';
 import '../Wedgit/TextFieldWidget.dart';
 import 'Home_Screen/Home_Screen.dart';
 
 class SignUp2Screen extends StatefulWidget {
-  const SignUp2Screen({super.key});
+  final TextEditingController email;
+  final TextEditingController password;
+  const SignUp2Screen({super.key, required this.email, required this.password});
 
   @override
   State<SignUp2Screen> createState() => _SignUp2ScreenState();
@@ -21,6 +25,18 @@ class _SignUp2ScreenState extends State<SignUp2Screen> {
         TextEditingController();
     TextEditingController addressTextEditingController =
     TextEditingController();
+    CollectionReference users =FirebaseFirestore.instance.collection('Users');
+
+    Future<void> addUser() async {
+      return users.add({
+        "Email": widget.email.text,
+        "Password" : widget.password.text,
+        "FirstName": firstNameTextEditingController.text,
+        "LastName" : lastNameTextEditingController.text,
+        "Phone" : phoneTextEditingController.text,
+        "Address" : addressTextEditingController.text
+      }).then((value) => print("user added")).catchError((error) => print("failed to add user: $error"));
+    }
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -53,22 +69,26 @@ class _SignUp2ScreenState extends State<SignUp2Screen> {
                 height: 38,
               ),
               TextFieldWidget(
+                obscureText: false,
                   emailTextEditingController: firstNameTextEditingController,
                   labelText: "First Name",
                   hintText: "Enter your first name",
                   hintIcon: "assets/icons/icons/User.svg"),
               TextFieldWidget(
+                  obscureText: false,
                   emailTextEditingController: lastNameTextEditingController,
                   labelText: "Last Name",
                   hintText: "Enter your last name",
                   hintIcon: "assets/icons/icons/User.svg"),
               TextFieldWidget(
+                  obscureText: false,
                   emailTextEditingController:
                       phoneTextEditingController,
                   labelText: "Phone Number",
                   hintText: "Enter your phone number",
                   hintIcon: "assets/icons/icons/Phone.svg"),
               TextFieldWidget(
+                  obscureText: false,
                   emailTextEditingController:
                       addressTextEditingController,
                   labelText: "Address",
@@ -76,11 +96,28 @@ class _SignUp2ScreenState extends State<SignUp2Screen> {
                   hintIcon: "assets/icons/icons/Location point.svg"),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: CustomButton(buttonText: "Continue", onTap: () {
-                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const HomeScreen(),), (route) => false);
+                child: CustomButton(buttonText: "Continue", onTap: () async {
+                  try {
+                    final credential = await FirebaseAuth.instance
+                        .createUserWithEmailAndPassword(
+                      email: widget.email.text,
+                      password: widget.password.text,
+                    );
+                    addUser();
+                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const HomeScreen(),), (route) => false);
+                  } on FirebaseAuthException catch (e) {
+                    if (e.code == 'weak-password') {
+                      print('The password provided is too weak.');
+                    } else if (e.code == 'email-already-in-use') {
+                      print('The account already exists for that email.');
+                    }
+                  } catch (e) {
+                    print(e);
+                  }
+
                   General.savePrefString("Name", "$firstNameTextEditingController $lastNameTextEditingController");
-                  General.savePrefString("Name", "$phoneTextEditingController");
-                  General.savePrefString("Name", "$addressTextEditingController");
+                  General.savePrefString("Phone", "$phoneTextEditingController");
+                  General.savePrefString("Adress", "$addressTextEditingController");
                 }),
               ),
               const SizedBox(

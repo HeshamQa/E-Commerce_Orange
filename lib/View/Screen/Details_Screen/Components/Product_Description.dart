@@ -1,16 +1,19 @@
-import 'package:ecommerceorange/Model/ProductsDetails.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerceorange/View/Screen/Details_Screen/Components/Product_Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'TopRoundedContainer.dart';
 
 class ProductDescription extends StatelessWidget {
+  final List<QueryDocumentSnapshot> data;
+
+  final int index;
+
   const ProductDescription({
     super.key,
-    required this.product,
+    required this.data,
+    required this.index
   });
-
-  final ProductDetails product;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,7 @@ class ProductDescription extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 25, top: 30),
             child: Text(
-              product.title,
+              data[index]['name'],
               style: const TextStyle(
 
                 fontSize: 20,
@@ -35,21 +38,22 @@ class ProductDescription extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(15),
               width: 64,
-              decoration: BoxDecoration(
-                color: product.isFavourite
-                    ? const Color(0xFFFFE6E6)
-                    : const Color(0xFFF5F6F9),
-                borderRadius: const BorderRadius.only(
+              decoration: const BoxDecoration(
+                color:
+                // product.isFavourite?
+                   Color(0xFFFFE6E6),
+                    // : const Color(0xFFF5F6F9),
+                borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20),
                   bottomLeft: Radius.circular(20),
                 ),
               ),
               child: SvgPicture.asset(
                 "assets/icons/icons/Heart Icon_2.svg",
-                colorFilter: ColorFilter.mode(
-                    product.isFavourite
-                        ? const Color(0xFFFF4848)
-                        : const Color(0xFFDBDEE4),
+                colorFilter: const ColorFilter.mode(
+                    // product.isFavourite ?
+                    Color(0xFFFF4848),
+                        // : const Color(0xFFDBDEE4),
                     BlendMode.srcIn),
                 height: 16,
               ),
@@ -58,7 +62,7 @@ class ProductDescription extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 40),
             child: Text(
-              product.description,
+              data[index]['description'],
               style: const TextStyle(
 
                 fontSize: 15,
@@ -81,7 +85,7 @@ class ProductDescription extends StatelessWidget {
               ),
             ),
           ),
-          ProductColors(product: product)
+          ProductColors(data:data,index:index)
         ],
       ),
     );

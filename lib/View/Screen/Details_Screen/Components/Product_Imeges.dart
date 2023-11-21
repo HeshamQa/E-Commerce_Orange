@@ -1,9 +1,10 @@
-import 'package:ecommerceorange/Model/ProductsDetails.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class ProductImages extends StatefulWidget {
-  const ProductImages({super.key,required this.product});
-  final ProductDetails product;
+  final List<QueryDocumentSnapshot> data;
+  final int index;
+  const ProductImages({super.key, required this.data, required this.index});
   @override
   State<ProductImages> createState() => Product_ImagesState();
 }
@@ -18,18 +19,17 @@ class Product_ImagesState extends State<ProductImages> {
           SizedBox(
               width: MediaQuery.of(context).size.width,
               child: Hero(
-                  tag: widget.product.id,
-                  child: Image.asset(widget.product.images[selectedImage],height: 275,fit: BoxFit.fitHeight,))),
+                  tag: widget.data[widget.index]['name'],
+                  child: Image.network(widget.data[widget.index]['image'][selectedImage],height: 275,fit: BoxFit.fitHeight,))),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ...List.generate(
-                widget.product.images.length,
+                widget.data[widget.index]['image'].length,
                     (index) => InkWell(
                   onTap: () {
-                    setState(() {
-                      selectedImage = index;
-                    });
+                    selectedImage = index;
+                    setState(() {});
                   },
                   child: Container(
                     margin: const EdgeInsets.only(right: 15),
@@ -43,7 +43,7 @@ class Product_ImagesState extends State<ProductImages> {
                           color: Colors.deepOrange.withOpacity(
                               selectedImage == index ? 1 : 0)),
                     ),
-                    child: Image.asset(widget.product.images[index]),
+                    child: Image.network(widget.data[widget.index]['image'][index]),
                   ),
                 ),
               ),

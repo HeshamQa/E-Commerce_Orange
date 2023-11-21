@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerceorange/View/Screen/Home_Screen/Body/Fav_Body.dart';
 import 'package:ecommerceorange/View/Screen/Home_Screen/Body/Profile_Body.dart';
 import 'package:flutter/material.dart';
@@ -10,17 +11,27 @@ class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
-
+List<dynamic> favList=[];
+List<QueryDocumentSnapshot> data=[];
+getData() async{
+  QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection("Product").get();
+  data.addAll(querySnapshot.docs);
+}
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    getData();
+    setState(() {});
+    super.initState();
+  }
   int cIndex=0;
-  Widget homeBody=const HomeBody();
+  Widget homeBody=HomeBody(fav: favList,data: data,);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: homeBody,
       ),
-
       ///Bottom Navigation Bar
       bottomNavigationBar: Container(
         padding: const EdgeInsets.only(top: 10),
@@ -56,19 +67,19 @@ class _HomeScreenState extends State<HomeScreen> {
             backgroundColor: Colors.white,
             currentIndex: cIndex,
             onTap: (value) {
-              setState(() {
-                cIndex=value;
-                if(cIndex==0) {
-                  homeBody=const HomeBody();
-                }else if(cIndex==1){
-                  homeBody=const FavBody();
-                } else if(cIndex==3) {
-                  homeBody=const ProfileScreen();
-                }
-              });
+              setState(() {cIndex=value;
+              if(cIndex==0) {
+                homeBody= HomeBody(fav:favList,data:data);
+              }else if(cIndex==1){
+                homeBody= FavBody(fav:favList);
+              } else if(cIndex==3) {
+                homeBody=const ProfileScreen();
+              }});
             },
             showSelectedLabels: false,
             showUnselectedLabels: false,
+            selectedIconTheme: const IconThemeData(color: Colors.deepOrange),
+            unselectedIconTheme: const IconThemeData(color: Colors.grey),
           ),
         ),
       ),

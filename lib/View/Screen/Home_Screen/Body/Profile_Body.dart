@@ -1,3 +1,5 @@
+import 'package:ecommerceorange/View/Screen/LoginScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -81,7 +83,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ProfileButton(
               text: "Log Out",
               icon: "assets/icons/icons/Log out.svg",
-              press: () {},
+              press: ()async {
+                await FirebaseAuth.instance.signOut();
+                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const LoginScreen(),), (route) => false);
+              },
             ),
           ],
         ),
