@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerceorange/View/Screen/Home_Screen/Body/Fav_Body.dart';
-import 'package:ecommerceorange/View/Screen/Home_Screen/Body/Profile_Body.dart';
+import 'package:ecommerceorange/View/Screen/FavScreen/FavScreen.dart';
+import 'package:ecommerceorange/View/Screen/ProfileScreen/Profile_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'Body/Home_Body.dart';
@@ -67,7 +67,8 @@ class _HomeScreenState extends State<HomeScreen> {
             backgroundColor: Colors.white,
             currentIndex: cIndex,
             onTap: (value) {
-              setState(() {cIndex=value;
+              setState(() {
+                cIndex=value;
               if(cIndex==0) {
                 homeBody= HomeBody(fav:favList,data:data);
               }else if(cIndex==1){

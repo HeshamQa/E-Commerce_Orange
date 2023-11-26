@@ -1,9 +1,9 @@
 
+import 'package:ecommerceorange/data/AppRoutes.dart';
 import 'package:ecommerceorange/data/Static/static.dart';
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 import '../Wedgit/Button.dart';
-import 'LoginScreen.dart';
 
 class onBoardingScreen extends StatefulWidget {
   const onBoardingScreen({super.key});
@@ -108,11 +108,7 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
                           : "Next",
                       onTap: () {
                         if (cIndex == onBoardingList.length - 1) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const LoginScreen(),
-                              ));
+                          Get.toNamed(AppRoute.login);
                         }
                         _controller!.nextPage(
                             duration: const Duration(microseconds: 100),

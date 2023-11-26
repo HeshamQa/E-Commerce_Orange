@@ -1,36 +1,32 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerceorange/General.dart';
+import 'package:ecommerceorange/View/Screen/SIgnUp_Screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../data/AppRoutes.dart';
 import '../Wedgit/Button.dart';
 import '../Wedgit/TextFieldWidget.dart';
-import 'Home_Screen/Home_Screen.dart';
-
 class SignUp2Screen extends StatefulWidget {
-  final TextEditingController email;
-  final TextEditingController password;
-  const SignUp2Screen({super.key, required this.email, required this.password});
-
+  const SignUp2Screen({super.key});
   @override
   State<SignUp2Screen> createState() => _SignUp2ScreenState();
 }
-
 class _SignUp2ScreenState extends State<SignUp2Screen> {
   @override
   Widget build(BuildContext context) {
+    TextEditingController email=emailTextEditingController;
+    TextEditingController password=passwordTextEditingController;
     TextEditingController firstNameTextEditingController = TextEditingController();
-    TextEditingController lastNameTextEditingController =
-        TextEditingController();
-    TextEditingController phoneTextEditingController =
-        TextEditingController();
-    TextEditingController addressTextEditingController =
-    TextEditingController();
+    TextEditingController lastNameTextEditingController = TextEditingController();
+    TextEditingController phoneTextEditingController = TextEditingController();
+    TextEditingController addressTextEditingController = TextEditingController();
     CollectionReference users =FirebaseFirestore.instance.collection('Users');
 
     Future<void> addUser() async {
       return users.add({
-        "Email": widget.email.text,
-        "Password" : widget.password.text,
+        "Email": email.text,
+        "Password" : password.text,
         "FirstName": firstNameTextEditingController.text,
         "LastName" : lastNameTextEditingController.text,
         "Phone" : phoneTextEditingController.text,
@@ -100,11 +96,11 @@ class _SignUp2ScreenState extends State<SignUp2Screen> {
                   try {
                     final credential = await FirebaseAuth.instance
                         .createUserWithEmailAndPassword(
-                      email: widget.email.text,
-                      password: widget.password.text,
+                      email: email.text,
+                      password: password.text,
                     );
                     addUser();
-                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const HomeScreen(),), (route) => false);
+                    Get.offAllNamed(AppRoute.login);
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'weak-password') {
                       print('The password provided is too weak.');
@@ -117,7 +113,7 @@ class _SignUp2ScreenState extends State<SignUp2Screen> {
 
                   General.savePrefString("Name", "$firstNameTextEditingController $lastNameTextEditingController");
                   General.savePrefString("Phone", "$phoneTextEditingController");
-                  General.savePrefString("Adress", "$addressTextEditingController");
+                  General.savePrefString("Address", "$addressTextEditingController");
                 }),
               ),
               const SizedBox(

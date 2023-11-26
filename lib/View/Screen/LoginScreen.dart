@@ -1,11 +1,10 @@
+import 'package:ecommerceorange/data/AppRoutes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../Wedgit/Button.dart';
 import '../Wedgit/SocialButton.dart';
 import '../Wedgit/TextFieldWidget.dart';
-import 'Forget_Password.dart';
-import 'Home_Screen/Home_Screen.dart';
-import 'SIgnUp_Screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -87,12 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     const Spacer(),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  const ForgetPasswordScreen(),
-                            ));
+                        Get.toNamed(AppRoute.forget);
                       },
                       child: const Text(
                         "Forget Password?",
@@ -116,12 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           email: emailTextEditingController.text,
                           password: passwordTextEditingController.text,
                       );
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const HomeScreen(),
-                          ),
-                              (route) => false);
+                      Get.offAllNamed(AppRoute.home);
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'user-not-found') {
                         print('======================No user found for that email.');
@@ -165,11 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
                            color: Colors.deepOrange),
                     ),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const SignUpScreen(),
-                          ));
+                      Get.toNamed(AppRoute.signup);
                     },
                   ),
                 ],

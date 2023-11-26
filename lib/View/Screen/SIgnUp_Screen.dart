@@ -1,26 +1,22 @@
+import 'package:ecommerceorange/data/AppRoutes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import '../../General.dart';
 import '../Wedgit/Button.dart';
 import '../Wedgit/TextFieldWidget.dart';
-import 'SignUp_2_Screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
-
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
-
+TextEditingController emailTextEditingController = TextEditingController();
+TextEditingController passwordTextEditingController = TextEditingController();
+TextEditingController confirmPasswordTextEditingController = TextEditingController();
 class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
-
-    TextEditingController emailTextEditingController = TextEditingController();
-    TextEditingController passwordTextEditingController =
-        TextEditingController();
-    TextEditingController confirmPasswordTextEditingController =
-        TextEditingController();
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -33,7 +29,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
               const Text(
                 'Register Account',
                 style: TextStyle(
-
                   fontSize: 30,
                   fontWeight: FontWeight.w700,
                 ),
@@ -47,7 +42,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 textWidthBasis: TextWidthBasis.parent,
-                style: TextStyle( color: Colors.grey),
+                style: TextStyle(color: Colors.grey),
               ),
               const SizedBox(
                 height: 42,
@@ -76,37 +71,39 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: CustomButton(
                     buttonText: "Continue",
                     onTap: () async {
-                        if (passwordTextEditingController.text ==
-                            confirmPasswordTextEditingController.text) {
-                          Navigator.pushReplacement(
-                              context, MaterialPageRoute(builder: (context) =>
-                              SignUp2Screen(email: emailTextEditingController,
-                                  password: passwordTextEditingController),));
-                          print("${passwordTextEditingController.text}");
-                        }
-                        else {
-                          showDialog(context: context, builder: (context) =>
-                              Center(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const Text(
-                                          "ConfirmPassword Isn't the same",
-                                          style: TextStyle(color: Colors.white,
-                                              fontSize: 20)),
-                                      TextButton(onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                        child: const Text("Back",),
-                                        style: ButtonStyle(
-                                            backgroundColor: MaterialStatePropertyAll(
-                                                Colors.white)),)
-                                    ],
-                                  )),
-                          );
-                        }
-                      General.savePrefString("Email", emailTextEditingController.toString());
-                      General.savePrefString("Password", passwordTextEditingController.toString());
+                      if (passwordTextEditingController.text ==
+                          confirmPasswordTextEditingController.text) {
+                        Get.offNamed(AppRoute.signup2);
+                        print(passwordTextEditingController.text);
+                      } else {
+                        showDialog(
+                          context: context,
+                          builder: (context) => Center(
+                              child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text("ConfirmPassword Isn't the same",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20)),
+                              TextButton(
+                                onPressed: () {
+                                  Get.back();
+                                },
+                                style: const ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStatePropertyAll(Colors.white)),
+                                child: const Text(
+                                  "Back",
+                                ),
+                              )
+                            ],
+                          )),
+                        );
+                      }
+                      General.savePrefString(
+                          "Email", emailTextEditingController.toString());
+                      General.savePrefString(
+                          "Password", passwordTextEditingController.toString());
                     }),
               ),
               const SizedBox(
@@ -172,7 +169,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
               const Text(
                 "By continuing you're confirm that you agree\nTerm and Policy",
                 style: TextStyle(
-
                   color: Colors.grey,
                 ),
                 textAlign: TextAlign.center,

@@ -1,9 +1,11 @@
 import 'package:ecommerceorange/View/Screen/OnBoarding_Screen.dart';
+import 'package:ecommerceorange/data/AppRoutes.dart';
 import 'package:ecommerceorange/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:get/get.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +34,7 @@ class _MyAppState extends State<MyApp> {
   }
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'muli',
@@ -40,6 +42,7 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
       home: const onBoardingScreen(),
+      routes: route,
       builder: EasyLoading.init(),
     );
   }
